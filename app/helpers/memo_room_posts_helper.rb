@@ -1,0 +1,2 @@
+module MemoRoomPostsHelper
+end

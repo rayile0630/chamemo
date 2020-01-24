@@ -1,0 +1,16 @@
+<div class="row">
+  <% @memo_room_posts.each do |memo_room_post| %>
+    <% if memo_room_post.role == 0 %>
+      <div class="col-sm-12">
+        <div style="width:150px;height:100px;background-color:chartreuse;" class="rounded">
+          <%= memo_room_post.content %></div>
+      </div>
+    <% elsif memo_room_post.role == 1 %> 
+    <div class="offset-sm-6 col-sm-6">
+        <div style="width:150px;height:100px;background-color:floralwhite;" class="rounded">
+          <%= memo_room_post.content %></div>
+    </div>
+    <% end %> 
+  <% end %>
+</div>
+

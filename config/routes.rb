@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'memo_room_posts/create'
+  get 'memo_room_posts/destroy'
+  get 'memo_room_posts/edit'
   get 'relationships/create'
   get 'relationships/destroy'
   root to: 'toppages#index'
@@ -8,7 +11,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create] do
+  resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     member do
       get :followings
       get :followers
@@ -16,4 +19,5 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+  resources :memo_room_posts, only: [:index, :show, :new, :create, :destroy, :edit, :update]
 end
