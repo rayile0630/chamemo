@@ -1,16 +1,22 @@
 <div class="row">
-    <aside class="col-sm-4">
-        <div class="side-button-left">
-            ボタンが入ります
-        </div>
+  <aside class="col-sm-4">
+    <div class="side-button-left">
+      ボタンが入ります
+    </div>
     </aside>
     <div class="col-sm-4">
-        <div class="profile-icon">プロフィール画像が入る予定</div>
+      <div class="card"> <!--余裕あればブートストラップやめてCSSで書き直す予定-->
+        <div class="card-header">
+          <h3 class="card-title"><%= @user.name %></h3>
+        </div>
+      <div class="card-body">
+        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 50 }) %>" alt="">
+      </div>
+      <%= render 'relationships/follow_button', user: @user %>
     </div>
     <aside class="col-sm-4">
-        <div class="side-button-right">
-            ボタンが入ります
-        </div>
-        
+      <div class="side-button-right">
+        ボタンが入ります
+      </div>
     </aside>
 </div>
