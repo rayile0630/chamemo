@@ -15,7 +15,7 @@ class MemoRoomPostsController < ApplicationController
   
   def create
     @memo_room_post = current_user.memo_room_posts.build(memo_room_post_params)
-    if MemoRoomPost.last.role == 0
+    if MemoRoomPost.last.role == 0  #今のままだと不十分。memo_roomとの関連ずけをする
       @memo_room_post.role = 1
     elsif MemoRoomPost.last.role == 1
       @memo_room_post.role = 0
