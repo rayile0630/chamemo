@@ -1,0 +1,8 @@
+<p>カテゴリを新規作成する場合はこちらに入力してください。</p>
+<%= form_with(model: @category, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.text_area :title, class: 'form-control', rows: 5, placeholder: "カテゴリ名を作成してください" %>
+      </div>
+        <%= f.submit 'カテゴリの追加', class: 'btn btn-primary btn-block' %>
+<% end %>

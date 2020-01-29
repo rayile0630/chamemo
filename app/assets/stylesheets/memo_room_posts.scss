@@ -1,3 +1,122 @@
-// Place all the styles related to the memo_room_posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "UTF-8";
+
+/*以下、①背景色など*/
+.line-bc {
+  padding: 0px 1px;
+  padding-bottom: 30px;
+  max-width: 450px;
+  margin: 15px auto;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+  position: relative;
+
+}
+
+/*以下、②左側のコメント*/
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.balloon6 .faceicon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.balloon6 .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative; 
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+/*以下、③右側の緑コメント*/
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative; 
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+//投稿formの大きさ変更送信ボタンが入るように右に隙間を
+
+.chat-form {
+  width: 85%;
+  position: absolute;
+  bottom: 1vh;
+  margin-top: 1vh;
+}
+
+//タイトルを入れるとこの背景
+.line__title {
+  background-color: #273246;
+  color: white;
+  text-align: center;
+}
+
+//セレクトボタンのボーダー
+button, select {
+    border: 1px solid;
+}
+
+.line__title {
+  height: 5vh;
+  padding: 0.5vh;
+}
+
+//紙飛行機マークの色
+.btn {
+  color: #0080ff;
+  font-size: 4vh;
+  position: relative;
+  top: 2vh;
+}

@@ -1,9 +1,5 @@
 <% if logged_in? %>
-<div class="line-bc">
-  <!-- タイトル -->
-    <div class="line__title">
-      ルーム名：<%= @memo_room.title %>
-    </div>
+<div class="row line-bc">
   <% @memo_room_posts.each do |memo_room_post| %>
     <% if memo_room_post.role == 0 %>
       <div class="col-sm-12 balloon6">
@@ -25,14 +21,12 @@
     </div>
     <% end %> 
   <% end %>
-      <%= form_with(model: @memo_room_post, url: memo_room_memo_room_posts_url(@memo_room), local: true) do |f| %>
+      <%= form_with(model: @memo_room, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
-            <%= hidden_field_tag :memo_room_id, @memo_room.id %>
-            <%= f.text_area :content, class: 'form-control chat-form', placeholder: "メモの内容を入れて投稿してください" %>
+           <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "メモの内容を入れて投稿してください" %>
           </div>
-          <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %><i class="fas fa-paper-plane"></i>
-          <% end %>
+          <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
       <% end %>
   <% else %>
   <div class="center">
@@ -43,4 +37,3 @@
   </div>
 <% end %>
 </div>
-

@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（再確認)
+        introduction: 自己紹介
+        picuture: 画像
+      memo_room:
+        title: メモルーム名
+      category:
+        title:　カテゴリ名
+      memo_room_post:
+        content: メッセージ
+        

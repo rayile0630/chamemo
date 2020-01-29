@@ -1,13 +1,5 @@
 <% if logged_in? %>
-  memo_roomで作ったタイトルを一番上に持ってくる。
   <%= render 'memo_room_posts/memo_room_posts', memo_room_post: @memo_room_posts%>
-      <%= form_with(model: @memo_room_post, local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-          <div class="form-group">
-           <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "メモの内容を入れて投稿してください" %>
-          </div>
-          <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
-      <% end %>
   <% else %>
   <div class="center">
       <div class="text-center">

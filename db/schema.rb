@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_043414) do
+ActiveRecord::Schema.define(version: 2020_01_25_071824) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
 
   create_table "memo_room_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -18,7 +26,19 @@ ActiveRecord::Schema.define(version: 2020_01_24_043414) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "memo_room_id"
+    t.index ["memo_room_id"], name: "index_memo_room_posts_on_memo_room_id"
     t.index ["user_id"], name: "index_memo_room_posts_on_user_id"
+  end
+
+  create_table "memo_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_memo_rooms_on_category_id"
+    t.index ["user_id"], name: "index_memo_rooms_on_user_id"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,7 +63,11 @@ ActiveRecord::Schema.define(version: 2020_01_24_043414) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "categories", "users"
+  add_foreign_key "memo_room_posts", "memo_rooms"
   add_foreign_key "memo_room_posts", "users"
+  add_foreign_key "memo_rooms", "categories"
+  add_foreign_key "memo_rooms", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
 end

@@ -17,7 +17,7 @@
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             </ul>
           </li>
-          <li class="nav-item"><%= link_to '新規投稿ページ', new_memo_room_post_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '新規投稿ページ', new_memo_room_path, class: 'nav-link' %></li>
         <% else %>
           <li class="nav-item"><%= link_to '新規登録', signup_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
