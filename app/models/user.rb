@@ -17,6 +17,9 @@ class User < ApplicationRecord
   
   has_secure_password
   
+  #画像のアップロードModelの紐付け
+  mount_uploader :picture, ImagesUploader
+  
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
