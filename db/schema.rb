@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_071824) do
+ActiveRecord::Schema.define(version: 2020_01_29_145806) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_01_25_071824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "memo_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memo_room_id"], name: "index_favorites_on_memo_room_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "memo_room_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -64,6 +73,8 @@ ActiveRecord::Schema.define(version: 2020_01_25_071824) do
   end
 
   add_foreign_key "categories", "users"
+  add_foreign_key "favorites", "memo_rooms"
+  add_foreign_key "favorites", "users"
   add_foreign_key "memo_room_posts", "memo_rooms"
   add_foreign_key "memo_room_posts", "users"
   add_foreign_key "memo_rooms", "categories"
