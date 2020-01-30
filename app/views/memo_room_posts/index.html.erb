@@ -1,0 +1,42 @@
+<% if logged_in? %>
+<div class="line-bc">
+  <!-- タイトル -->
+    <div class="line__title">
+      ルーム名：<%= @memo_room.title %>
+    </div>
+  <% @memo_room_posts.each do |memo_room_post| %>
+    <% if memo_room_post.role == 0 %>
+      <div class="col-sm-12 balloon6">
+        <div class="faceicon">
+          <!--img画像-->
+        </div>
+        <div class="chatting">
+          <div class='says'>
+            <p><%= memo_room_post.content %></p>
+          </div>
+        </div>
+      </div>
+    <% elsif memo_room_post.role == 1 %> 
+    <div class="offset-sm-6 col-sm-6 mycomment">
+      <div class="faceicon">
+          <!--img画像-->
+      </div>
+          <p><%= memo_room_post.content %></p>
+    </div>
+    <% end %> 
+  <% end %>
+  <% if current_user == @memo_room.user %>
+  <% else %>
+    <%= render 'relationships/follow_button', user: @memo_room %>
+    <%= render 'favorites/like_button', memo_room: @memo_room %>
+  <% end %>    
+  
+  <% else %>
+  <div class="center">
+      <div class="text-center">
+        <h1>まずは新規登録をお願いします</h1>
+        <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+  </div>
+<% end %>
+</div>

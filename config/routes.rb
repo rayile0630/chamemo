@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   post 'categories/create'
   get 'categories/destroy'
   get 'memo_rooms/create'
@@ -26,8 +28,9 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
    resources :memo_rooms, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
-    resources :memo_room_posts, only: [:new, :create,]
+    resources :memo_room_posts, only: [:index, :new, :create,]
   end
-  resources :memo_room_posts, only: [:index, :show, :destroy, :edit, :update]
+  resources :memo_room_posts, only: [:show, :destroy, :edit, :update]
   resources :categories, only: [:index, :new, :create, :edit, :update]
+  resources :favorites, only: [:create, :destroy]
 end

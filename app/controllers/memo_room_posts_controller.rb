@@ -1,7 +1,10 @@
 class MemoRoomPostsController < ApplicationController
   
   def index
-    @Memo_room_posts = MemoRoomPost.all.order(id: :desc).page(params[:page]).per(25)
+    @memo_room = MemoRoom.find(params[:memo_room_id])
+    @memo_room_posts = MemoRoomPost.all.order(id: :desc).page(params[:page]).per(25)
+    @memo_room_post = @memo_room.memo_room_posts
+    
   end
   
   def show
