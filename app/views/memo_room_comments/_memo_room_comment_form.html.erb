@@ -1,0 +1,61 @@
+<% if logged_in? %>
+<div class="line-bc">
+  <!-- タイトル -->
+    <div class="line__title">
+      ルーム名：<%= @memo_room.title %>
+    </div>
+  <% @memo_room_posts.each do |memo_room_post| %>
+    <% if memo_room_post.role == 0 %>
+      <div class="col-sm-12 balloon6">
+        <div class="faceicon">
+          <%= image_tag current_user.post_a_picture.to_s %>
+        </div>
+        <div class="chatting">
+          <div class='says'>
+            <p><%= memo_room_post.content %></p>
+          </div>
+        </div>
+      </div>
+    <% elsif memo_room_post.role == 1 %> 
+    <div class="offset-sm-6 col-sm-6 mycomment">
+      <div class="faceicon">
+          <%= image_tag current_user.post_b_picture.to_s %>
+      </div>
+          <p><%= memo_room_post.content %></p>
+    </div>
+    <% end %> 
+  <% end %>
+<%= form_with(model: @memo_room_comment,url: memo_room_memo_room_comments_url(@memo_room), local: true) do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :user_id %>
+    <%= hidden_field_tag :memo_room_id, @memo_room.id %>
+    <%= f.text_area :content, class: 'form-control', placeholder: "コメントを50文字以内で入力してください。"  %>
+  </div>
+    <%= f.submit "コメントをする", class: "btn btn-primary" %>
+<% end %>
+<% @memo_room_comments.each do |memo_room_comment| %>
+            <li class="media mb-3 chat_icon">
+              <%= image_tag memo_room_comment.user.picture.to_s %>
+                <div class="media-body">
+                <div>
+                  <%= link_to memo_room_comment.user.name, user_path(memo_room_comment.user) %> <span class="text-muted">posted at <%= memo_room_comment.created_at.to_s.slice(0..18) %></span>
+                </div>
+                  <table class="table table-bordered table_border_radius">
+                    <tr>
+                       <td><%= memo_room_comment.content %></td>
+                    </tr>
+                  </table>
+                </div>    
+            </li>
+          <% end %>  
+<% else %>
+  <div class="center">
+      <div class="text-center">
+        <h1>まずは新規登録をお願いします</h1>
+        <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+  </div>
+<% end %>
+</div>
+
+<%= link_to '戻る', :back, class: 'back-button' %>

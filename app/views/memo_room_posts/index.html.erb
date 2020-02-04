@@ -4,11 +4,11 @@
     <div class="line__title">
       ルーム名：<%= @memo_room.title %>
     </div>
-  <% @memo_room_posts.each do |memo_room_post| %>
+  <% @memo_room_post.each do |memo_room_post| %>
     <% if memo_room_post.role == 0 %>
       <div class="col-sm-12 balloon6">
         <div class="faceicon">
-          <!--img画像-->
+          <%= image_tag current_user.post_a_picture.to_s %>
         </div>
         <div class="chatting">
           <div class='says'>
@@ -19,7 +19,7 @@
     <% elsif memo_room_post.role == 1 %> 
     <div class="offset-sm-6 col-sm-6 mycomment">
       <div class="faceicon">
-          <!--img画像-->
+          <%= image_tag current_user.post_b_picture.to_s %>
       </div>
           <p><%= memo_room_post.content %></p>
     </div>
@@ -27,10 +27,15 @@
   <% end %>
   <% if current_user == @memo_room.user %>
   <% else %>
-    <%= render 'relationships/follow_button', user: @memo_room %>
-    <%= render 'favorites/like_button', memo_room: @memo_room %>
-  <% end %>    
-  
+    <div class="button-field">
+      <%= render 'relationships/follow_button', user: @memo_room %>
+      <%= render 'favorites/like_button', memo_room: @memo_room %>
+      <%= link_to "コメント", new_memo_room_memo_room_comment_path(@memo_room), class: "comment-button" %>
+    </div>  
+  <% end %> 
+  <div>
+  <%= link_to 'マイページ', user_path(current_user), class: 'back-button' %>
+  </div>
   <% else %>
   <div class="center">
       <div class="text-center">

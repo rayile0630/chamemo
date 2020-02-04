@@ -1,0 +1,38 @@
+<div class="row">
+  <aside class="col-sm-4">
+  </aside>
+  <div class="col-sm-4">
+    <div class="profile-background">
+    <div class="profile-icon-background">
+      <div class="profile-icon">
+        <%= image_tag @user.picture.to_s, alt: 'プロフィール画像' %>
+        <div class="profile-name">
+          <%= @user.name %>
+        </div>
+      </div>
+    </div>
+  </div>  
+      <%= render 'relationships/follow_button', user: @user %>
+      <div class="introduction-field">自己紹介：
+    <%= @user.introduction %></div>
+    </div> 
+      <aside class="col-sm-4 side-button-position">
+        <div class="side-button-left">
+          <%= link_to "新規投稿ページ", new_memo_room_path, class: "links-button" %>
+          <%= link_to "メモ一覧広場", users_path, class: "links-button" %>
+        </div>  
+        <div class="side-button-right">
+          <%= link_to "プロフィール設定", edit_user_path(@user), class: "links-button" %>
+          <%= link_to "お気に入りユーザ", followings_user_path(@user), class: "links-button" %>
+        </div>
+      </aside>
+  </div>
+
+<ul class="nav nav-tabs nav-justified mb-3 list-unstyled">
+      <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+      <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+</ul>
+<%= render 'users', users: @followers %>
+</div>
+
+<%= link_to 'マイページ', user_path(@user), class: 'back-button' %>

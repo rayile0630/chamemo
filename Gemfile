@@ -57,3 +57,4 @@ gem 'kaminari'
 gem 'rails-i18n'
 gem 'pry-byebug', group: :development
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'jquery-rails'

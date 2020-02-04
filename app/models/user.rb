@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   before_save { self.email.downcase! }
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :name, presence: true, length: { maximum: 10 }
+  validates :email, presence: true, length: { maximum: 50 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :introduction, presence: true, length: { maximum: 100 } 
+  validates :introduction, presence: true, length: { maximum: 50 } 
   
   
   has_many :relationships
@@ -16,11 +16,14 @@ class User < ApplicationRecord
   has_many :categories
   has_many :favorites, dependent: :destroy
   has_many :favposts, through: :favorites, source: :memo_room, dependent: :destroy
+  has_many :memo_room_comments
   
   has_secure_password
   
   #画像のアップロードModelの紐付け
   mount_uploader :picture, ImagesUploader
+  mount_uploader :post_a_picture, ImagesUploader
+  mount_uploader :post_b_picture, ImagesUploader
   
   def follow(other_user)
       unless self == other_user

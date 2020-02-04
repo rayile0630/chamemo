@@ -1,0 +1,15 @@
+<ul><% @memo_rooms.each do |memo_room| %>
+  <li class="tabel table-bordered">
+      <tr>
+          <th>タイトル:</th>
+          <td><%= link_to memo_room.title, memo_room %></td>
+      </tr>
+      <p></p>
+      <tr>
+        <th>投稿日:</th>
+          <td><%= memo_room.created_at.to_s.slice(0..18) %></td>
+      </tr>
+  </li>
+  <% end %>
+  </table>
+</ul>

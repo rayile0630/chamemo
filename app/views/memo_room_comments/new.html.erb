@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <%= render 'memo_room_comments/memo_room_comment_form', memo_room_comment: @memo_room_comments %>
+  <% else %>
+  <div class="center">
+      <div class="text-center">
+        <h1>まずは新規登録をお願いします</h1>
+        <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+  </div>
+<% end %>

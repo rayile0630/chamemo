@@ -8,7 +8,7 @@
     <% if memo_room_post.role == 0 %>
       <div class="col-sm-12 balloon6">
         <div class="faceicon">
-          <!--img画像-->
+          <%= image_tag current_user.post_a_picture.to_s %>
         </div>
         <div class="chatting">
           <div class='says'>
@@ -19,9 +19,11 @@
     <% elsif memo_room_post.role == 1 %> 
     <div class="offset-sm-6 col-sm-6 mycomment">
       <div class="faceicon">
-          <!--img画像-->
+          <%= image_tag current_user.post_b_picture.to_s %>
       </div>
-          <p><%= memo_room_post.content %></p>
+      <div class="chatting">
+        <p><%= memo_room_post.content %></p>
+      </div>  
     </div>
     <% end %> 
   <% end %>
@@ -33,7 +35,7 @@
           </div>
           <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %><i class="fas fa-paper-plane"></i>
           <% end %>
-      <% end %>
+    <% end %>  
   <% else %>
   <div class="center">
       <div class="text-center">

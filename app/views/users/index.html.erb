@@ -1,2 +1,48 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="row">
+  <aside class="col-sm-4">
+  </aside>
+  <div class="col-sm-4">
+    <div class="profile-background">
+    <div class="profile-icon-background">
+      <div class="profile-icon">
+        <%= image_tag @user.picture.to_s, alt: 'プロフィール画像' %>
+        <div class="profile-name">
+          <%= @user.name %>
+        </div>
+      </div>
+    </div>
+  </div>  
+      <div class="introduction-field">自己紹介：
+    <%= @user.introduction %></div>
+    </div> 
+      <aside class="col-sm-4 side-button-position">
+        <div class="side-button-left">
+          <%= link_to "新規投稿ページ", new_memo_room_path, class: "links-button" %>
+          <%= link_to "メモ一覧広場", users_path, class: "links-button" %>
+        </div>  
+        <div class="side-button-right">
+          <%= link_to "プロフィール設定", edit_user_path(@user), class: "links-button" %>
+          <%= link_to "お気に入りユーザ", followings_user_path(@user), class: "links-button" %>
+        </div>
+      </aside>
+  </div>
+</div>
+  <ul class="list-unstyled">
+    <% @memo_rooms.each do |memo_room| %>
+<li class="media-body">
+  <table class="table table-bordered table_border_radius">
+    <tr>
+      <td><%= image_tag memo_room.user.picture.to_s, alt: 'プロフィール画像' %> <span class="heart"><%= memo_room.favorites.count %></span>
+        <%= link_to memo_room.user.name, user_path(memo_room.user) %> <span class="text-muted">
+             </span>
+<%= link_to raw(memo_room.created_at.to_s.slice(0..15) + '<br>' + 'タイトル：' + memo_room.title + '<br>' + 'カテゴリ：' + memo_room.category.title), memo_room_memo_room_posts_path(memo_room) %> </td>
+  </tr>
+  </table>
+  <% if current_user == memo_room.user %>
+    <%= link_to '編集', edit_memo_room_path(memo_room.id), class: 'btn btn-info btn-sm'%>
+      <%= link_to "Delete", memo_room, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+          </li>
+          
+          <% end %>
+            </ul>

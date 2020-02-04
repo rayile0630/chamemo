@@ -1,3 +1,254 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "UTF-8";
+
+body {
+  padding: 0px;
+  background-image: url('blue0017.png');
+  text-align: center;
+  
+}
+
+//リンクのボタンの色などの設定
+.links-button {
+    background-color: orange;
+    width:105px;
+    font-size:13px;
+    font-weight:bold;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+    padding:8px 0 10px;
+    color:#fff;
+    border-radius: 1.25rem;
+    box-shadow:1px 2px #ff8c00;
+    text-shadow:0 -1px #ff8c00;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.image-round{
+  border-radius: 50%;
+  border: 1px solid;
+  width: 15vh;
+  height: 15vh;
+}
+
+/*いいねボタンの背景をハートに*/
+span.heart {
+  background-image: url('heart.png');
+  background-repeat:  no-repeat;                         /* 画像の繰り返しを指定  */              
+  background-position:center center;                     /* 画像の表示位置を指定  */
+  background-size:contain;     
+  padding: 12px;
+  font-weight: 5px;
+}
+//プロフィール画像の設定
+.profile-icon {
+  position: absolute;
+  top: 3vh;
+  left: 4vh;
+}
+//プロフィール画像の後ろの背景の設定
+.profile-icon-background {
+  position: relative;
+  top: 6%;
+  left: 32%;
+  text-align: center;
+  border: 1px;
+  border-radius: 50%;
+  height: 16vh;
+  width: 16vh;
+  background-color: #e4fdfd;
+  margin-bottom: 10px;
+}
+//自己紹介部分の設定
+.introduction-field {
+  height: 18vh;
+  margin-bottom: 3vh;
+  width: 100%;
+  border-bottom: 1px solid #afb1b1;
+  border-radius: 3px;
+  background-color: #c8faff;
+  border-radius: 13px;
+}
+
+.list-unstyled {
+  margin-top: 12vh;
+  padding-left: 7px;
+  padding-right: 7px;
+  list-style: none;
+}
+
+.side-button-position {
+  position: relative;
+}
+
+//ボタンの設定
+.side-button-left {
+  display:flex;
+  position: absolute;
+  top: 4.5vh;
+  left: 9vh;
+}
+//ボタンの設定
+.side-button-right {
+  display:flex;
+  position: absolute;
+  top: -1vh;
+  left: 9vh;
+}
+
+
+
+//お気に入りユーザーのバック背景
+.friend-list {
+  background-color: #fff9e2;
+  border-radius: 10px;
+}
+
+//タブの丸み
+.nav-link.active {
+  border-radius: 10px;
+}
+
+//お気に入りユーザーの位置調整
+.list-styled {
+  padding-left: 7px;
+  padding-right: 7px;
+  list-style: none;
+}
+
+//フォームに丸みを持たせる
+.form-control {
+  border-radius: 1.25rem;
+}
+
+//dangerボタンの色変え
+.btn-danger {
+  background-color: #ef4091;
+  width: 100px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0 10px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px #e60e0e;
+  text-shadow: 0 -1px #a56403;
+  margin-right: 5px;
+  margin-top: 11px;
+  margin-bottom: 10px;
+  border-radius: 1.25rem;
+}
+
+//primaryボタン
+
+.btn-primary {
+  background-color: #5032fb;
+  width: 100px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0 10px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px #0d14ea;
+  text-shadow: 0 -1px #5a7eff;
+  margin-right: 5px;
+  margin-top: 11px;
+  margin-bottom: 10px;
+  border-radius: 1.25rem;
+}
+
+//サーチボタン
+button, input {
+  border-radius: 1.25rem;
+}
+
+//backボタン
+.back-button {
+  background-color: #616467;
+  width: 100px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 8px 0 10px;
+  color: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 1px 2px #cec8c8;
+  text-shadow: 0 -1px #e6e4e1;
+  margin-right: 10px;
+  margin-top: 3vh;
+  margin-bottom: 10px;
+  position: relative;
+  left: 35%;
+}
+//コメントボタン
+.comment-button {
+  background-color: #884a16;
+  width: 100px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0 10px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px #540f0f;
+  text-shadow: 0 -1px #e6e4e1;
+  margin-right: 5px;
+  margin-top: 3vh;
+  margin-bottom: 10px;
+  border-radius: 1.25rem;
+}
+
+//編集ボタン
+
+.edit-button {
+  background-color: #c7ca13;
+  width: 100px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0 10px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px #498e0b;
+  text-shadow: 0 -1px #1f6105;
+  margin-right: 10px;
+  margin-top: 3vh;
+  margin-bottom: 10px;
+  border-radius: 1.25rem;
+}
+
+//warningボタン
+.btn-warning {
+  background-color: #fbc3ff;
+  width: 105px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0 10px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px #ea73ec;
+  text-shadow: 0 -1px #fb0aff;
+  margin-right: 5px;
+  margin-top: 11px;
+  margin-bottom: 10px;
+  border-radius: 1.25rem;
+}
+
+button, select {
+  width: 100%;
+}

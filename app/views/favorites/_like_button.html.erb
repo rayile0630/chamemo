@@ -1,11 +1,13 @@
 <% if current_user.favpost?(memo_room) %>
   <%= form_with(model: current_user.favorites.find_by(memo_room_id: memo_room.id), local: true, method: :delete, class: "d-inline") do |f| %>
     <%= hidden_field_tag :memo_room_id, memo_room.id,{id: "like-id#{memo_room.id}"} %>
-    <%= f.submit 'いいね解除', class: 'btn btn-danger btn-sm' %>
+    <%= button_tag :type => "submit", :class =>"btn btn-danger btn-s-md" do %>いいね解除<span class="heart"><%= memo_room.favorites.count %></span>
+    <% end %>
   <% end %>
  <% else %>
   <%= form_with(model: current_user.favorites.build, local: true, class: "d-inline") do |f| %>
     <%= hidden_field_tag :memo_room_id, memo_room.id,{id: "like-id#{memo_room.id}"} %>
-    <%= f.submit 'いいね', class: 'btn btn-warning btn-sm' %>
+    <%= button_tag :type => "submit", :class =>"btn btn-warning btn-s-md" do %>いいね<span class="heart"><%= memo_room.favorites.count %></span>
+    <% end %>
   <% end %>
 <% end %>

@@ -1,4 +1,7 @@
 class MemoRoomPostsController < ApplicationController
+  before_action :require_user_logged_in
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  
   
   def index
     @memo_room = MemoRoom.find(params[:memo_room_id])
@@ -25,16 +28,17 @@ class MemoRoomPostsController < ApplicationController
     @memo_room_post = current_user.memo_room_posts.build(memo_room_post_params)
     @memo_room = MemoRoom.find(params[:memo_room_id])
     @memo_room_post.memo_room_id = @memo_room.id
+    #@memo_roomを使い、MemoRoomPostインスタンスの最後の発言データのroleの値を取得する
+    @lastpost = @memo_room.memo_room_posts.last
     
-    if MemoRoomPost.last.role == 0  #今のままだと不十分。memo_roomとの関連ずけをする
-      @memo_room_post.role = 1
-    elsif MemoRoomPost.last.role == 1
-      @memo_room_post.role = 0
+    if @lastpost == nil  #MemoRoomに紐付いたMemoRoomPostの最後のデータ がnilなら
+      @memo_room_post.role = 0 #memo_room_postのrole　を 0　にする。　開始位置 role 0
+    elsif @lastpost.role == 0 #MemoRoomに紐付いたMemoRoomPostの最後のデータのroleの値が0なら
+      @memo_room_post.role = 1   #memo_room_postのrole の値を 1にする。
+    elsif @lastpost.role == 1  ##MemoRoomに紐付いたMemoRoomPostの最後のデータのroleの値が 1なら
+      @memo_room_post.role = 0  #memo_room_postのroleの値を 0にする。
     end
     
-    if MemoRoomPost.last.role == nil
-      @memo_room_post.role = 1
-    end
     if @memo_room_post.save
       flash[:success] = 'メッセージを投稿しました。'
       redirect_back(fallback_location: new_memo_room_memo_room_post_url(@memo_room))
@@ -73,5 +77,12 @@ class MemoRoomPostsController < ApplicationController
   
   def memo_room_post_params
     params.require(:memo_room_post).permit(:content, :role, :memo_room_id)
+  end
+  
+  def correct_user
+    @memo_room_post = current_user.memo_rooms.find_by(id: params[:id])
+    unless @memo_room_post
+      redirect_to user_path(current_user)
+    end
   end
 end

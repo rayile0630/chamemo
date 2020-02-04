@@ -28,9 +28,14 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
    resources :memo_rooms, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
-    resources :memo_room_posts, only: [:index, :new, :create,]
+     collection do
+      get :search
+    end
+    resources :memo_room_posts, only: [:index, :new, :create]
+    resources :memo_room_comments, only: [:index, :new, :create, :destroy]
   end
   resources :memo_room_posts, only: [:show, :destroy, :edit, :update]
   resources :categories, only: [:index, :new, :create, :edit, :update]
   resources :favorites, only: [:create, :destroy]
+  resources :memo_room_comments, only: [:index, :show]
 end

@@ -1,6 +1,9 @@
 class MemoRoomsController < ApplicationController
+  before_action :require_user_logged_in
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  
   def index
-    @memo_room = MemoRoom.order(id: :desc).page(params[:page]).per(25)
+    @memo_rooms = MemoRoom.order(id: :desc).page(params[:page]).per(25)
   end
   
   def show
@@ -27,6 +30,8 @@ class MemoRoomsController < ApplicationController
   
   def edit
     @memo_room = MemoRoom.find(params[:id])
+    @memo_room_post = MemoRoomPost.find(params[:id])
+    @memo_room_posts = @memo_room.memo_room_posts
   end
   
   def update
@@ -44,12 +49,27 @@ class MemoRoomsController < ApplicationController
   def destroy
     @memo_room.destroy
     flash[:success] = 'メモルームを削除しました。'
-    redirect_to new_memo_room_path
+    redirect_back(fallback_location: root_path)
+  end
+  
+  def search
+     @memo_rooms = MemoRoom.search(params[:search])
+     if flash[:success] = "#{params[:search]}の検索結果"
+  else
+     redirect_back(fallback_location: root_path)
+     end
   end
   
   private
 
   def memo_room_params
     params.require(:memo_room).permit(:title, :category_id)
+  end
+  
+  def correct_user
+    @memo_room = current_user.memo_rooms.find_by(id: params[:id])
+    unless @memo_room
+      redirect_to user_path(current_user)
+    end
   end
 end

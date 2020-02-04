@@ -1,2 +1,45 @@
-<h1>MemoRooms#edit</h1>
-<p>Find me in app/views/memo_rooms/edit.html.erb</p>
+<h1>カテゴリとルームタイトルの変更</h1>
+<%= form_with(model: @memo_room, local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+    <div class="form-group"><label for="title">変更するカテゴリを選択してください</label> 
+      <%= f.collection_select :category_id, Category.all, :id, :title, :include_blank => true %> 　　</div>
+    <div class="form-group"> <label for="title">変更するタイトルを入力してください</label>
+      <%= f.text_field :title, class: 'form-control', rows: 5, placeholder: "タイトルを20文字以内で入力してください" %>
+    </div>
+    <%= f.submit 'カテゴリとルームタイトルの変更', class: 'btn btn-primary btn-block' %>
+      <% end %>
+      <div class="line-bc">
+        <h1>投稿したメモの編集</h1>
+        <%= form_with(model: @memo_room_post, local: true) do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
+            <% @memo_room_posts.each do |memo_room_post| %>
+              <% if memo_room_post.role == 0 %>
+                <div class="col-sm-12 balloon6">
+                  <div class="faceicon">
+                    <%= image_tag current_user.post_a_picture.to_s %>
+                  </div>
+                  <div class="chatting">
+                    <div class='says'>
+                      <div class="form-group">
+                        <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "メモの内容を入れて投稿してください" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% elsif memo_room_post.role == 1 %>
+                  <div class="offset-sm-6 col-sm-6 mycomment">
+                    <div class="faceicon">
+                      <%= image_tag current_user.post_b_picture.to_s %>
+                    </div>
+                    <div class="chatting">
+                      <div class="form-group">
+                        <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "メモの内容を入れて投稿してください" %>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                    <% end %>
+                      <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+                        <% end %>
+                          <%= link_to '一覧に戻る', :back %>
+                          </div>

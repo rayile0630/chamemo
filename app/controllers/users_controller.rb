@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :frendlists, :likes, :edit]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
+    @user = current_user
+    @memo_rooms = MemoRoom.all
   end
 
   def show
     @user = User.find(params[:id])
+    @memo_rooms = MemoRoom.all
+    counts(@user)
   end
 
   def new
@@ -41,6 +46,19 @@ class UsersController < ApplicationController
     end
   end
   
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
+  end
+  
+  
   def likes
     @user = User.find(params[:id])
     @favposts = @user.favposts.page(params[:page]).per(5)
@@ -52,5 +70,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction, :picture, :post_a_picture, :post_b_picture)
   end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+       redirect_back(fallback_location: user_path(@user))
+    end
+  end  
   
 end

@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+img {
+  width: 8vh;
+  height: 8vh;
+}
+
+/*テーブルの設定*/
+.table_border_radius {
+  width: 100%;
+  border: 3px solid #00ced1;
+  border-radius: 10px;
+  border-spacing: 0;
+  background-color:#f0fff0 !important;
+  background-image: radial-gradient(white 15%, transparent 16%),
+  radial-gradient(white 15%, transparent 16%);
+  background-size:30px 30px;
+  background-position: 0 0, 15px 15px;
+  border-collapse: separate;
+  margin-top: 10px;
+}
+.table_border_radius tr td {
+  border: 1px solid #00ced1;
+  width: 310px;
+}
+.table_border_radius tr td:first-child {
+  border-left: none;
+}
+.table_border_radius tr td:last-child {
+  border-right: none;
+}
+.table_border_radius tr:first-child td {
+  border-top: none;
+}
+.table_border_radius tr:last-child td {
+  border-bottom: none;
+}
+
+.table_border_radius tr th {
+  width: 90px;
+  border: 1px solid #00ced1;	
+}
+
+.table_border_radius tr th:first-child {
+  border-left: none;
+}
+.table_border_radius tr th:last-child {
+  border-right: none;
+}
+.table_border_radius tr:first-child th {
+  border-top: none;
+}
+.table_border_radius tr:last-child th {
+  border-bottom: none;
+}

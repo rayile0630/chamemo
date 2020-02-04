@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   def create
     memo_room = MemoRoom.find(params[:memo_room_id])
     current_user.like(memo_room)
-    flash[:success] = 'いいねしましたた。'
+    flash[:success] = 'いいねしました。'
     redirect_back(fallback_location: root_path)
   end
 

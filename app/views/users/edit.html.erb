@@ -26,4 +26,30 @@
       <%= f.submit '変更', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
+  
+  
+  <h2>チャット画像設定</h2>
+  <p>*メモルーム内で投稿した際に表示されるチャットのアイコン画像となります。</p>
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :password, '変更確認用パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :post_a_picture, '投稿アイコンAの画像' %>
+        <%= f.file_field :post_a_picture, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :post_b_picture, '投稿アイコンBの画像' %>
+        <%= f.file_field :post_b_picture, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '変更', class: 'btn btn-primary btn-block' %>
+    <% end %>
 </div>
+<%= link_to '戻る', :back, class: 'back-button' %>
