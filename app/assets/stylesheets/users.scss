@@ -116,6 +116,16 @@ span.heart {
   list-style: none;
 }
 
+//icon-b 発言Bの画像の調整
+.icon-b {
+  display: inline-block;
+}
+
+.icon-b img {
+  width: 6vh;
+  height: 6vh;
+}
+
 //フォームに丸みを持たせる
 .form-control {
   border-radius: 1.25rem;

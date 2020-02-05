@@ -19,11 +19,8 @@
     <% elsif memo_room_post.role == 1 %> 
     <div class="offset-sm-6 col-sm-6 mycomment">
       <div class="faceicon">
-          <%= image_tag current_user.post_b_picture.to_s %>
+        <p><%= memo_room_post.content %></p><%= image_tag current_user.post_b_picture.to_s %>
       </div>
-      <div class="chatting">
-        <p><%= memo_room_post.content %></p>
-      </div>  
     </div>
     <% end %> 
   <% end %>
