@@ -13,7 +13,6 @@ class MemoRoomPostsController < ApplicationController
   def show
     @memo_room_post = MemoRoomPost.find(params[:id])
     @memo_room_posts = MemoRoomPost.all.order(id: :desc)
-
     
   end
   
@@ -57,7 +56,7 @@ class MemoRoomPostsController < ApplicationController
     @memo_room_post = MemoRoomPost.find(params[:id])
     if @memo_room_post.update(memo_room_post_params)
       flash[:success] = '投稿 は正常に更新されました'
-      redirect_to memo_room_post_path(@memo_room_post)
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = '投稿 は更新されませんでした'
       render :edit
@@ -71,6 +70,9 @@ class MemoRoomPostsController < ApplicationController
   end
 
   def edit
+    @memo_room = MemoRoom.find(params[:id])
+    @memo_room_post = MemoRoomPost.find(params[:id])
+    @memo_room_posts = @memo_room.memo_room_posts
   end
   
   private

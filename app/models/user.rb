@@ -12,12 +12,12 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_of_relationship, source: :user
-  has_many :memo_room_posts
-  has_many :memo_rooms
-  has_many :categories
+  has_many :memo_room_posts, dependent: :destroy
+  has_many :memo_rooms, dependent: :destroy
+  has_many :categories, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favposts, through: :favorites, source: :memo_room, dependent: :destroy
-  has_many :memo_room_comments
+  has_many :memo_room_comments, dependent: :destroy
   
   has_secure_password
   

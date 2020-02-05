@@ -22,16 +22,17 @@
                   </div>
                   <div class="chatting">
                     <div class='says'>
+                      <p><%= memo_room_post.content %></p>
+                    </div>  
                       <div class="form-group">
                         <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "メモの内容を入れて投稿してください" %>
                       </div>
-                    </div>
                   </div>
                 </div>
                 <% elsif memo_room_post.role == 1 %>
                   <div class="offset-sm-6 col-sm-6 mycomment">
                     <div class="faceicon">
-                      <%= image_tag current_user.post_b_picture.to_s %>
+                     <p><%= memo_room_post.content %></p><div class="icon-b"><%= image_tag current_user.post_b_picture.to_s %></div>
                     </div>
                     <div class="chatting">
                       <div class="form-group">
@@ -43,7 +44,7 @@
                     <% end %>
                       <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
                         <% end %>
-                          <%= link_to '一覧に戻る', :back %>
+                          <%= link_to '一覧に戻る', :back, class: 'back-button' %>
                           </div>
                           </span>
                           </div>

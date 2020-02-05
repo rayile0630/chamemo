@@ -19,13 +19,12 @@
     <% elsif memo_room_post.role == 1 %> 
     <div class="offset-sm-6 col-sm-6 mycomment">
       <div class="faceicon">
-          <%= image_tag current_user.post_b_picture.to_s %>
+        <p><%= memo_room_post.content %></p><div class="icon-b"><%= image_tag current_user.post_b_picture.to_s %></div>
       </div>
-          <p><%= memo_room_post.content %></p>
-    </div>
     <% end %> 
   <% end %>
 <%= form_with(model: @memo_room_comment,url: memo_room_memo_room_comments_url(@memo_room), local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="form-group">
     <%= f.hidden_field :user_id %>
     <%= hidden_field_tag :memo_room_id, @memo_room.id %>

@@ -1,10 +1,10 @@
 class MemoRoom < ApplicationRecord
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, dependent: :destroy
   
   has_many :memo_room_posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :memo_room_comments
+  has_many :memo_room_comments, dependent: :destroy
   
   validates :title, presence: true, length: { maximum: 20 }
   
