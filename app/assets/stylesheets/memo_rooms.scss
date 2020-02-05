@@ -3,3 +3,20 @@
 body {
     padding: 0;
 }
+
+//icon-b 発言Bの画像の調整
+.icon-b {
+  display: inline-block;
+}
+
+.icon-b img {
+  width: 6vh;
+  height: 6vh;
+}
+
+//edit の画像Bの配置
+
+.mycomment {
+  margin: 10px 0;
+  display: inline;
+}
