@@ -64,7 +64,7 @@ span.heart {
 .introduction-field {
   height: 18vh;
   margin-bottom: 3vh;
-  width: 43vh;
+  width: 40vh;
   border-bottom: 1px solid #afb1b1;
   border-radius: 3px;
   background-color: #c8faff;
@@ -96,7 +96,6 @@ span.heart {
   top: -1vh;
   left: 9vh;
 }
-
 
 
 //お気に入りユーザーのバック背景
@@ -283,3 +282,4 @@ button, select {
       transform:translate(0, -1000%); //Big bubbles move faster
    }
 }
+
