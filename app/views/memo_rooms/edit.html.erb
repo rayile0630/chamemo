@@ -1,4 +1,6 @@
-<h1>カテゴリとルームタイトルの変更</h1>
+<div class="row">
+  <span class="particletext bubbles">
+<h2>カテゴリとルームタイトルの変更</h2>
 <%= form_with(model: @memo_room, local: true) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group"><label for="title">変更するカテゴリを選択してください</label> 
@@ -9,7 +11,7 @@
     <%= f.submit 'カテゴリとルームタイトルの変更', class: 'btn btn-primary btn-block' %>
       <% end %>
       <div class="line-bc">
-        <h1>投稿したメモの編集</h1>
+        <h2>投稿したメモの編集</h2>
         <%= form_with(model: @memo_room_post, local: true) do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
             <% @memo_room_posts.each do |memo_room_post| %>
@@ -42,4 +44,6 @@
                       <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
                         <% end %>
                           <%= link_to '一覧に戻る', :back %>
+                          </div>
+                          </span>
                           </div>
