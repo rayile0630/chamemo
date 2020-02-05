@@ -1,10 +1,12 @@
 <div class="row">
+  <span class="particletext bubbles">
   <aside class="col-sm-4">
   </aside>
   <div class="col-sm-4">
     <div class="profile-background">
     <div class="profile-icon-background">
       <div class="profile-icon">
+        
         <%= image_tag @user.picture.to_s, alt: 'プロフィール画像' %>
         <div class="profile-name">
           <%= @user.name %>
@@ -46,3 +48,4 @@
           
           <% end %>
             </ul>
+            </span>

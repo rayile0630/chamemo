@@ -2,7 +2,7 @@
 
 body {
   padding: 0px;
-  background-image: url('blue0017.png');
+  //background-image: url('blue0017.png'); 一旦保留
   text-align: center;
   
 }
@@ -251,4 +251,35 @@ button, input {
 
 button, select {
   width: 100%;
+}
+
+
+//ここからプロフィール画像部分のエフェクト
+.particletext {
+  text-align:center;
+  font-size:17px;
+  position: relative;
+}
+.bubbles {
+  >.particle {
+  opacity:0;
+  position: absolute;
+  background-color:rgba(33,150,243,0.5);
+  animation: bubbles 4s ease-in infinite;
+  border-radius:100%;
+   }
+}
+
+@keyframes bubbles {
+   0% {
+      opacity: 0;
+   }
+   20% { //show and hint at moving
+      opacity: 1;
+      transform:translate(0, -20%);
+   }
+   100% {
+      opacity: 0;
+      transform:translate(0, -1000%); //Big bubbles move faster
+   }
 }

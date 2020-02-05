@@ -1,14 +1,15 @@
+<% if logged_in? %>
 <div class="row">
+  <span class="particletext bubbles">
   <aside class="col-sm-4">
   </aside>
   <div class="col-sm-4">
     <div class="profile-background">
     <div class="profile-icon-background">
       <div class="profile-icon">
-        <span class="particletext hearts">
         <%= image_tag @user.picture.to_s, alt: 'プロフィール画像' %>
         <div class="profile-name">
-          <%= @user.name %></span>
+          <%= @user.name %>
         </div>
       </div>
     </div>
@@ -48,3 +49,13 @@
           
           <% end %>
             </ul>
+            </span>
+            <% else %>
+    <div class="center jumbotron">
+      <div class="text-center">
+        <h1>selfmade_chatmemo</h1>
+          <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+    </div>
+  </div>    
+  <% end %>
