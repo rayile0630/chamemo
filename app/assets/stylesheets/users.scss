@@ -12,6 +12,11 @@ body {
   padding-left: 13px;
 }
 
+//navのハンバーガーの位置を調整する為にcontents
+.navbar-toggler:not(:disabled):not(.disabled) {
+  display: contents;
+}
+
 //リンクのボタンの色などの設定
 .links-button {
     background-color: orange;
