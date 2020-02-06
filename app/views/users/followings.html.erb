@@ -1,5 +1,4 @@
-<div class="row">
-  <span class="particletext bubbles">
+<div class="row particletext bubbles">
   <aside class="col-sm-4">
   </aside>
   <div class="col-sm-4">
@@ -28,7 +27,6 @@
         </div>
       </aside>
   </div>
-</div>
 <ul class="nav nav-tabs nav-justified mb-3 list-unstyled">
       <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
       <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
@@ -36,4 +34,4 @@
 <%= render 'users', users: @followings %>
 
 <%= link_to 'マイページ', user_path(@user), class: 'back-button' %>
-</span>
+

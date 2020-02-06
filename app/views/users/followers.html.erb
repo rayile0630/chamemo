@@ -1,5 +1,4 @@
-<div class="row">
-  <span class="particletext bubbles">
+<div class="row particletext bubbles">
   <aside class="col-sm-4">
   </aside>
   <div class="col-sm-4">
@@ -34,7 +33,5 @@
       <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
 </ul>
 <%= render 'users', users: @followers %>
-</div>
 
 <%= link_to 'マイページ', user_path(@user), class: 'back-button' %>
-</span>
