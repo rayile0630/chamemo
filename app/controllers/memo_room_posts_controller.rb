@@ -27,7 +27,7 @@ class MemoRoomPostsController < ApplicationController
     @memo_room_post = current_user.memo_room_posts.build(memo_room_post_params)
     @memo_room = MemoRoom.find(params[:memo_room_id])
     @memo_room_post.memo_room_id = @memo_room.id
-    #@memo_roomを使い、MemoRoomPostインスタンスの最後の発言データのroleの値を取得する
+    #@memo_roomを使い、MemoRoomPostインスタンスの最後の発言データを取得する
     @lastpost = @memo_room.memo_room_posts.last
     
     if @lastpost == nil  #MemoRoomに紐付いたMemoRoomPostの最後のデータ がnilなら
