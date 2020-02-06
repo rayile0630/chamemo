@@ -1,25 +1,25 @@
 <% if logged_in? %>
-<div class="row">
-  <span class="particletext bubbles">
-<p>カテゴリを新規作成する場合はこちらに入力してください。</p>
+<div class="row particletext bubbles">
+  <div class="col-sm-12">
+<h2>カテゴリを新規作成する場合はこちらに入力してください。</h2>
 <%= form_with(model: @category, url: categories_create_path, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
       <div class="form-group">
-        <%= f.text_field :title, class: 'form-control', rows: 1, placeholder: "カテゴリ名２０文字以内で作成してください" %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "カテゴリ名２０文字以内で作成してください" %>
       </div>
         <%= f.submit 'カテゴリの追加', class: 'btn btn-primary btn-block' %>
 <% end %>
-<p>既に作成済みの方はカテゴリを選択してください（必須)</p>
+<h2>既に作成済みの方はカテゴリを選択してください（必須)</h2>
 <%= form_with(model: @memo_room, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
         <div class="form-group">
     　　  <%= f.collection_select :category_id, current_user.categories, :id, :title, :include_blank => true, :prompt => "未選択" %>
     　　</div>  
         <div class="form-group">
-           <label for="title">メモルームのタイトルを入力してください。</label><%= f.text_field :title, class: 'form-control', rows: 5, placeholder: "タイトルを20文字以内で入力してください" %>
+           <label for="title">メモルームのタイトルを入力してください。</label><%= f.text_field :title, class: 'form-control', placeholder: "タイトルを20文字以内で入力してください" %>
         </div>
           <%= f.submit 'ルームを新規作成', class: 'btn btn-primary btn-block' %>
 <% end %>
-</span>
+</div>
 </div>
 <% end %>

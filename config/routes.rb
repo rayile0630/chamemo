@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'categories/create'
   get 'relationships/create'
   get 'relationships/destroy'
+  
   root to: 'toppages#index'
 
   get 'login', to: 'sessions#new'
@@ -23,10 +24,10 @@ Rails.application.routes.draw do
      collection do
       get :search
     end
-    resources :memo_room_posts, only: [:index, :new, :create]
+    resources :memo_room_posts, only: [:index, :new, :create, :destroy]
     resources :memo_room_comments, only: [:index, :new, :create, :destroy]
   end
-  resources :memo_room_posts, only: [:show, :destroy, :edit, :update]
+  resources :memo_room_posts, only: [:show, :edit, :update]
   resources :categories, only: [:index, :new, :create, :edit, :update]
   resources :favorites, only: [:create, :destroy]
   resources :memo_room_comments, only: [:index, :show]
