@@ -1,5 +1,6 @@
 <% if logged_in? %>
-<div class="line-bc">
+<div class="row particletext bubbles">
+<div class="line-bc col-sm-12">
   <!-- タイトル -->
     <div class="line__title">
       ルーム名：<%= @memo_room.title %>
@@ -34,6 +35,7 @@
   <% end %> 
   <div>
   <%= link_to 'マイページ', user_path(current_user), class: 'back-button' %>
+  </div>
   </div>
   <% else %>
   <div class="center">
