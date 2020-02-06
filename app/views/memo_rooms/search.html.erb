@@ -1,4 +1,5 @@
-<ul><% @memo_rooms.each do |memo_room| %>
+<ul class="search-border particletext bubbles">
+  <% @memo_rooms.each do |memo_room| %>
   <li class="tabel table-bordered">
       <tr>
           <th>タイトル:</th>
@@ -13,3 +14,4 @@
   <% end %>
   </table>
 </ul>
+<%= link_to '戻る', :back, class: 'back-button' %>

@@ -17,6 +17,20 @@ body {
   display: contents;
 }
 
+ul {
+  list-style: none;
+}
+
+//searchの枠
+.search-border {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+}
+
+.table-bordered {
+  margin-bottom: 10px;
+}
+
 //リンクのボタンの色などの設定
 .links-button {
     background-color: orange;
