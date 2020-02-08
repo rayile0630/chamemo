@@ -7,7 +7,7 @@ class MemoRoomPostsController < ApplicationController
     @memo_room = MemoRoom.find(params[:memo_room_id])
     @memo_room_posts = MemoRoomPost.all.order(id: :desc).page(params[:page]).per(25)
     @memo_room_post = @memo_room.memo_room_posts
-    
+    gon.memo_room_post = @memo_room.memo_room_posts.content #jsに渡すmemo_room_idに紐づいた発言データ
   end
   
   def show

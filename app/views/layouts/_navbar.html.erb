@@ -12,9 +12,10 @@
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-item"><%= link_to 'マイページ', user_path(current_user) %></li>
+               <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             </ul>
           </li>
-          <li class="nav-item"><%= link_to 'ログアウト', logout_path(current_user), class: 'nav-link' %></li>
         <% else %>
           <li class="nav-item"><%= link_to '新規登録', signup_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
