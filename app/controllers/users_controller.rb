@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @memo_rooms = MemoRoom.all
+    @memo_rooms = MemoRoom.all.order(id: :desc)
     counts(@user)
   end
 

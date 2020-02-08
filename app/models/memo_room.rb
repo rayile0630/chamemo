@@ -1,5 +1,5 @@
 class MemoRoom < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   belongs_to :category, dependent: :destroy
   
   has_many :memo_room_posts, dependent: :destroy
